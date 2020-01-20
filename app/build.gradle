@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 
 static def getPackageName() {
-    return "org.linphone"
+    //return "org.linphone"
+    return "org.xcall"
 }
 
 static def firebaseEnabled() {
