@@ -3,23 +3,23 @@
 
     <!-- URLs, URIs and domain -->
     <!-- Set the default domain used for account creation/addresses -->
-    <string name="default_domain" translatable="false">sip.linphone.org</string>
-    <string name="default_stun" translatable="false">stun.linphone.org</string>
-    <string name="default_conference_factory_uri" translatable="false">sip:conference-factory@sip.linphone.org</string>
-    <string name="default_lime_x3dh_server_url" translatable="false">https://lime.linphone.org/lime-server/lime-server.php</string>
-    <string name="rls_uri" translatable="false">sip:rls@sip.linphone.org</string>
-    <string name="about_link" translatable="false">https://linphone.org</string>
-    <string name="download_link" translatable="false">https://linphone.org/download</string>
-    <string name="recover_password_link" translatable="false">https://linphone.org/freesip/recover</string>
-    <string name="about_privacy_policy_link" translatable="false">https://www.linphone.org/terms-and-privacy</string>
+    <string name="default_domain" translatable="false">5.9.118.112</string>
+    <string name="default_stun" translatable="false">5.9.118.112</string>
+    <string name="default_conference_factory_uri" translatable="false">sip:conference-factory@5.9.118.112</string>
+    <string name="default_lime_x3dh_server_url" translatable="false">https://5.9.118.112/lime-server/lime-server.php</string>
+    <string name="rls_uri" translatable="false">sip:rls@5.9.118.112</string>
+    <string name="about_link" translatable="false">https://5.9.118.112</string>
+    <string name="download_link" translatable="false">https://5.9.118.112/download</string>
+    <string name="recover_password_link" translatable="false">https://5.9.118.112/freesip/recover</string>
+    <string name="about_privacy_policy_link" translatable="false">https://5.9.118.112/terms-and-privacy</string>
     <string name="about_license_link" translatable="false">https://www.gnu.org/licenses/gpl-3.0.html</string>
 
     <!-- Textual mention of the app name -->
-    <string name="user_agent" translatable="false">LinphoneAndroid</string>
-    <string name="temp_photo_name" translatable="false">linphone-android-photo-temp</string>
-    <string name="temp_photo_name_with_date" translatable="false">linphone-android-photo-%s</string>
+    <string name="user_agent" translatable="false">XCallAndroid</string>
+    <string name="temp_photo_name" translatable="false">xcall-android-photo-temp</string>
+    <string name="temp_photo_name_with_date" translatable="false">xcall-android-photo-%s</string>
     <string name="about_text" translatable="false">GNU General Public License V3\n © 2010–2019 Belledonne Communications</string>
-    <string name="about_bugreport_email" translatable="false">linphone-android@belledonne-communications.com</string>
+    <string name="about_bugreport_email" translatable="false">sergio_p@list.ru</string>
     <string name="notification_service_channel_id" translatable="false">linphone_notification_service_id</string>
     <string name="notification_channel_id" translatable="false">linphone_notification_id</string>
 
@@ -28,7 +28,7 @@
     <string name="push_type" translatable="false">firebase</string>
 
     <!-- UI config -->
-    <bool name="orientation_portrait_only">false</bool>
+    <bool name="orientation_portrait_only">true</bool>
     <bool name="force_use_of_linphone_friends">false</bool>
     <bool name="use_linphone_tag">true</bool>
     <bool name="hide_bottom_bar_on_second_level_views">true</bool>

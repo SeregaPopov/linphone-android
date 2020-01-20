@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <!--Custom-->
-  <string name="app_name">Linphone</string>
-  <string name="service_name">Служба Linphone</string>
-  <string name="addressbook_label">Linphone</string>
-  <string name="notification_title">Linphone</string>
+  <string name="app_name">XCall</string>
+  <string name="service_name">Служба XCall</string>
+  <string name="addressbook_label">XCall</string>
+  <string name="notification_title">XCall</string>
   <string name="wait_dialog_text">Загружается</string>
   <string name="notification_registered">%s соединено</string>
   <string name="notification_register_failure">%s соединиться не удалось</string>
   <string name="tunnel_host"></string>
-  <string name="about_version">Linphone Android %s</string>
-  <string name="about_liblinphone_version">Ядро Linphone %s</string>
-  <string name="about_liblinphone_sdk_version">Linphone SDK %s</string>
+  <string name="about_version">XCall Android %s</string>
+  <string name="about_liblinphone_version">Ядро XCall %s</string>
+  <string name="about_liblinphone_sdk_version">XCall SDK %s</string>
   <string name="about_privacy_policy">Посетите нашу политику конфиденциальности</string>
-  <string name="sync_account_name">контакты linphone</string>
+  <string name="sync_account_name">контакты XCall</string>
   <!--Notifications-->
   <string name="notification_reply_label">Ответ</string>
   <string name="notification_replied_label">Отправил ответ: %s</string>
@@ -75,20 +75,20 @@
   <string name="assistant_validate_account_1">Ваш аккаунт создан. Для подтверждения аккаунта проверьте свою почту:</string>
   <string name="assistant_validate_account_2">После этого вернитесь и нажмите кнопку.</string>
   <string name="assistant_welcome_desc">Этот помощник поможет вам настроить и использовать свой SIP-аккаунт.</string>
-  <string name="assistant_linphone_login_desc">Введите имя пользователя и пароль аккаунта Linphone</string>
+  <string name="assistant_linphone_login_desc">Введите имя пользователя и пароль аккаунта XCall</string>
   <string name="assistant_login_desc">Введите имя пользователя и пароль вашего домена SIP</string>
   <string name="assistant_remote_provisioning_desc">Укажите URL-адрес конфигурации</string>
   <string name="transport">Транспорт</string>
   <string name="assistant_create_account_phone_number_address">Ваш SIP-адрес</string>
-  <string name="assistant_login_linphone">Использовать аккаунт Linphone</string>
+  <string name="assistant_login_linphone">Использовать аккаунт XCall</string>
   <string name="assistant_login_generic">Использовать SIP-аккаунт</string>
   <string name="assistant_remote_provisioning">Загрузить удалённую конфигурацию</string>
   <string name="assistant_create_account_part_1">Подтвердите код страны и введите свой номер телефона</string>
   <string name="assistant_create_account_part_2">Мы отправили SMS-сообщение с кодом подтверждения на ваш номер телефона:</string>
   <string name="assistant_create_account_part_3">Чтобы завершить проверку номера телефона, введите 4-значный код ниже:\n</string>
-  <string name="assistant_create_account_part_email">Введите имя пользователя, адрес электронной почты и пароль для вашего аккаунта Linphone</string>
+  <string name="assistant_create_account_part_email">Введите имя пользователя, адрес электронной почты и пароль для вашего аккаунта XCall</string>
   <string name="assistant_display_name_optional">Отображаемое имя (необязательно)</string>
-  <string name="assistant_linphone_account">Использовать аккаунт Linphone</string>
+  <string name="assistant_linphone_account">Использовать аккаунт XCall</string>
   <string name="assistant_generic_account">Использовать SIP-аккаунт</string>
   <string name="assistant_remote_provisioning_title">Загрузить удалённую конфигурацию</string>
   <string name="assistant_fetch_apply">Загрузить и применить</string>
@@ -125,9 +125,9 @@
   <string name="use_email_for_validation">Использовать адрес электронной почты для проверки аккаунта</string>
   <string name="login_with_username">Вместо номера телефона использовать имя пользователя и пароль</string>
   <string name="phone_number_info_title">Для чего будет использоваться мой номер телефона?</string>
-  <string name="phone_number_info_content">\nВашим друзьям будет проще связаться с вами, если вы свяжете свой аккаунт со своим номером телефона.\n\n В вашей адресной книге вы увидите, кто использует Linphone, а ваши друзья смогут узнать, что вы также зарегистрированы в Linphone.\n</string>
-  <string name="phone_number_link_info_content">\nВашим друзьям будет проще связаться с вами, если вы свяжете свой аккаунт со своим номером телефона.\n\nВ вашей адресной книге вы увидите, кто использует Linphone, а ваши друзья смогут узнать, что вы также зарегистрированы в Linphone.\n</string>
-  <string name="phone_number_link_info_content_already_account">Номер телефона можно использовать только с одним аккаунтом Linphone.\n\nЕсли ваш номер уже был связан с другим аккаунтом, но вы предпочитаете использовать его, просто свяжите его сейчас, и ваш номер будет автоматически перенесен в этот аккаунт.</string>
+  <string name="phone_number_info_content">\nВашим друзьям будет проще связаться с вами, если вы свяжете свой аккаунт со своим номером телефона.\n\n В вашей адресной книге вы увидите, кто использует XCall, а ваши друзья смогут узнать, что вы также зарегистрированы в XCall.\n</string>
+  <string name="phone_number_link_info_content">\nВашим друзьям будет проще связаться с вами, если вы свяжете свой аккаунт со своим номером телефона.\n\nВ вашей адресной книге вы увидите, кто использует XCall, а ваши друзья смогут узнать, что вы также зарегистрированы в XCall.\n</string>
+  <string name="phone_number_link_info_content_already_account">Номер телефона можно использовать только с одним аккаунтом XCall.\n\nЕсли ваш номер уже был связан с другим аккаунтом, но вы предпочитаете использовать его, просто свяжите его сейчас, и ваш номер будет автоматически перенесен в этот аккаунт.</string>
   <string name="phone_number_overuse">Слишком много SMS было отправлено на этот номер за короткий промежуток времени, повторите попытку через 24 часа.</string>
   <string name="account_doesnt_exist">Аккаунт не существует</string>
   <!--Status-->
@@ -175,7 +175,7 @@
   <string name="contact_last_name">Фамилия</string>
   <string name="contact_organization">Организация</string>
   <string name="invite_friend">Пригласить</string>
-  <string name="invite_friend_text">Здравствуйте! Присоединяйтесь ко мне в Linphone! Вы можете загрузить его бесплатно отсюда: %s</string>
+  <string name="invite_friend_text">Здравствуйте! Присоединяйтесь ко мне в XCall! Вы можете загрузить его бесплатно отсюда: %s</string>
   <string name="toast_choose_contact_for_edition">Выберите контакт или создайте новый</string>
   <!--Chat-->
   <string name="no_chat_history">Нет разговоров</string>
@@ -417,7 +417,7 @@
   <string name="pref_video_codecs_title">Кодеки</string>
   <!--Contact settings-->
   <string name="pref_contact_sync_title">Информация о присутствии в родном контакте</string>
-  <string name="pref_contact_sync_subtitle">Вставка информационных ярлыков из контакта Linphone в родные контакты Android</string>
+  <string name="pref_contact_sync_subtitle">Вставка информационных ярлыков из контакта XCall в родные контакты Android</string>
   <string name="pref_contact_title">Контакт</string>
   <string name="pref_contact_display_contact_organization_title">Отображать контактную организацию</string>
   <string name="pref_create_contact_shortcuts">Создать ярлыки в лаунчере</string>
@@ -431,7 +431,7 @@
   <string name="pref_sipinfo_dtmf">Отправить вне потока DTMFs (SIP INFO)</string>
   <string name="pref_call_timeout_title">Таймаут вызова (в секундах)</string>
   <string name="pref_voice_mail">URI голосовой почты</string>
-  <string name="pref_dialer_call">Использовать Linphone в качестве приложения для звонков по умолчанию.</string>
+  <string name="pref_dialer_call">Использовать XCall в качестве приложения для звонков по умолчанию.</string>
   <string name="pref_accept_early_media">Принимать ранний поток</string>
   <string name="pref_grant_read_dnd_settings_permission_title">Настройки «Не беспокоить»</string>
   <string name="pref_grant_read_dnd_settings_permission_desc">Нам нужно, чтобы вы разрешили использовать доступ к настройкам «Не беспокоить», чтобы звонить правильно или нет в зависимости от текущей политики</string>
@@ -483,7 +483,7 @@
   <string name="pref_friendlist_subscribe">Подписка</string>
   <string name="pref_background_mode">Фоновый режим</string>
   <string name="pref_background_mode_desc">Показывать уведомление, чтобы сохранить приложение рабочим</string>
-  <string name="pref_background_mode_warning_desc">Linphone был ограничен для фонового использования, пожалуйста, сначала авторизуйтесь</string>
+  <string name="pref_background_mode_warning_desc">XCall был ограничен для фонового использования, пожалуйста, сначала авторизуйтесь</string>
   <string name="pref_animation_enable_title">Включить анимацию</string>
   <string name="pref_service_notification">Включить сервисное уведомление</string>
   <string name="pref_autostart">Запуск во время загрузки</string>
@@ -543,7 +543,7 @@
   <string name="content_description_search_contact">Поиск контакта</string>
   <string name="content_description_search_country">Поиск страны</string>
   <string name="content_description_all_contacts">Все контакты</string>
-  <string name="content_description_linphone_contacts">Контакты Linphone</string>
+  <string name="content_description_linphone_contacts">Контакты XCall</string>
   <string name="content_description_call_direction">Направление вызова</string>
   <string name="content_description_all_calls">Все вызовы</string>
   <string name="content_description_missed_calls">Пропущенные вызовы</string>
@@ -586,8 +586,8 @@
   <string name="content_description_call_options">Параметры вызова</string>
   <string name="content_description_audio_route">Аудио маршрут</string>
   <string name="content_description_exit_conference">Выйти из конференции</string>
-  <string name="content_title_notification_service">Сервисное уведомление Linphone</string>
-  <string name="content_title_notification">Уведомления мгновенных сообщений Linphone</string>
+  <string name="content_title_notification_service">Сервисное уведомление XCall</string>
+  <string name="content_title_notification">Уведомления мгновенных сообщений XCall</string>
   <string name="content_description_conversation_subject">Тема группового чата</string>
   <string name="content_description_conversation_infos">Информация о групповом чате</string>
   <string name="content_description_record_call">Запись звонка</string>

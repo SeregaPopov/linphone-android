@@ -1,5 +1,5 @@
 [sip]
-contact="Linphone Android" <sip:linphone.android@unknown-host>
+contact="XCall Android" <sip:XCall.android@unknown-host>
 use_info=0
 use_ipv6=1
 keepalive_period=30000
@@ -23,15 +23,15 @@ auto_start=1
 
 [tunnel]
 host=
-port=443
+port=5061
 
 [misc]
-log_collection_upload_server_url=https://www.linphone.org:444/lft.php
-file_transfer_server_url=https://www.linphone.org:444/lft.php
-version_check_url_root=https://www.linphone.org/releases
+log_collection_upload_server_url=https://5.9.118.112:444/lft.php
+file_transfer_server_url=https://5.9.118.112:444/lft.php
+version_check_url_root=https://5.9.118.112/releases
 max_calls=10
 history_max_size=100
 
 [in-app-purchase]
-server_url=https://subscribe.linphone.org:444/inapp.php
+server_url=https://5.9.118.112:444/inapp.php
 purchasable_items_ids=test_account_subscription
