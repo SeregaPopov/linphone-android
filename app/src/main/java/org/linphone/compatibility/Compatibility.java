@@ -51,7 +51,9 @@ public class Compatibility {
             return ApiTwentySixPlus.getDeviceName(context);
         }
 
-        String name = BluetoothAdapter.getDefaultAdapter().getName();
+        // Popov: if bluetooth is not ready on device, will be fatal exception
+        BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+        String name = (btAdapter != null) ? btAdapter.getName() : null;
         if (name == null) {
             name = Settings.Secure.getString(context.getContentResolver(), "bluetooth_name");
         }

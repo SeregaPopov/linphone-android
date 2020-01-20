@@ -20,10 +20,8 @@
 package org.linphone;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -31,7 +29,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.telephony.PhoneStateListener;
@@ -65,6 +62,7 @@ import org.linphone.core.Reason;
 import org.linphone.core.Tunnel;
 import org.linphone.core.TunnelConfig;
 import org.linphone.core.VersionUpdateCheckResult;
+import org.linphone.core.tools.AndroidPlatformHelper;
 import org.linphone.core.tools.H264Helper;
 import org.linphone.core.tools.Log;
 import org.linphone.settings.LinphonePreferences;
@@ -224,6 +222,9 @@ public class LinphoneManager implements SensorEventListener {
                             VersionUpdateCheckResult result,
                             String version,
                             String url) {
+
+                        // Popov: fatal on startup
+                        /*
                         if (result == VersionUpdateCheckResult.NewVersionAvailable) {
                             final String urlToUse = url;
                             final String versionAv = version;
@@ -260,6 +261,8 @@ public class LinphoneManager implements SensorEventListener {
                                     },
                                     1000);
                         }
+                         */
+
                     }
 
                     @Override
@@ -411,6 +414,9 @@ public class LinphoneManager implements SensorEventListener {
             mCore.addListener(listener);
             mCore.addListener(mCoreListener);
 
+            AndroidPlatformHelper.copyAssetsFromPackage(
+                    mContext, "org.xcall.sert", "./share/linphone");
+
             if (isPush) {
                 Log.w(
                         "[Manager] We are here because of a received push notification, enter background mode before starting the Core");
@@ -470,6 +476,7 @@ public class LinphoneManager implements SensorEventListener {
         mCore.setCallLogsDatabasePath(mCallLogDatabaseFile);
         mCore.setFriendsDatabasePath(mFriendsDatabaseFile);
         mCore.setUserCertificatesPath(mUserCertsPath);
+
         // mCore.setCallErrorTone(Reason.NotFound, mErrorToneFile);
         enableDeviceRingtone(mPrefs.isDeviceRingtoneEnabled());
 
