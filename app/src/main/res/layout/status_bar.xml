@@ -46,7 +46,7 @@
         android:src="@drawable/voicemail"
         android:visibility="gone" />
 
-    <TextView
+    <!--TextView
         android:id="@+id/voicemail_count"
         style="@style/status_bar_font"
         android:layout_width="wrap_content"
@@ -55,6 +55,29 @@
         android:layout_centerVertical="true"
         android:paddingLeft="5dp"
         android:paddingRight="10dp"
+        android:visibility="gone" /-->
+
+    <TextView
+        android:id="@+id/voicemail_count"
+        style="@style/status_bar_font"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/money_text"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
         android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/money_text"
+        style="@style/status_bar_font"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+
+        android:text="Eur: 14.58"
+        android:visibility="visible" />
 
 </RelativeLayout>

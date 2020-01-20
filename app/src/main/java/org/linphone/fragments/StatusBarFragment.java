@@ -41,6 +41,7 @@ import org.linphone.core.tools.Log;
 
 public class StatusBarFragment extends Fragment {
     private TextView mStatusText, mVoicemailCount;
+    private TextView mCurrentMoneyText; // Popov
     private ImageView mStatusLed;
     private ImageView mVoicemail;
     private CoreListenerStub mListener;
@@ -56,6 +57,7 @@ public class StatusBarFragment extends Fragment {
         ImageView menu = view.findViewById(R.id.side_menu_button);
         mVoicemail = view.findViewById(R.id.voicemail);
         mVoicemailCount = view.findViewById(R.id.voicemail_count);
+        mCurrentMoneyText = view.findViewById(R.id.money_text); // Popov
 
         mMenuListener = null;
         menu.setOnClickListener(

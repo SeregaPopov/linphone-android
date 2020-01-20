@@ -50,6 +50,7 @@ import org.linphone.utils.LinphoneUtils;
 
 public class CallStatusBarFragment extends Fragment {
     private TextView mStatusText;
+    private TextView mCurrentMoneyText; // Popov
     private ImageView mStatusLed, mCallQuality, mEncryption;
     private Runnable mCallQualityUpdater;
     private CoreListenerStub mListener;
@@ -66,6 +67,7 @@ public class CallStatusBarFragment extends Fragment {
         mStatusLed = view.findViewById(R.id.status_led);
         mCallQuality = view.findViewById(R.id.call_quality);
         mEncryption = view.findViewById(R.id.encryption);
+        mCurrentMoneyText = view.findViewById(R.id.money_text); // Popov
 
         mStatsListener = null;
         mCallQuality.setOnClickListener(

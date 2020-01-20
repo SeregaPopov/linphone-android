@@ -41,12 +41,38 @@
         android:id="@+id/encryption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/money_text"
         android:adjustViewBounds="true"
         android:contentDescription="@string/content_description_encryption"
         android:padding="5dp"
         android:src="@drawable/security_ko"
         android:visibility="gone" />
+
+    <!--ImageView
+        android:id="@+id/encryption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/money_text"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/content_description_encryption"
+        android:padding="5dp"
+        android:src="@drawable/security_ko"
+        android:visibility="visible" /-->
+
+
+    <TextView
+        android:id="@+id/money_text"
+        style="@style/status_bar_font"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+
+        android:text="Eur: 14.58"
+        android:visibility="visible" />
 
 </RelativeLayout>
