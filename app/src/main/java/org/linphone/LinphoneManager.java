@@ -36,6 +36,7 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import androidx.appcompat.app.AppCompatDelegate;
 import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -49,6 +50,7 @@ import org.linphone.core.AccountCreator;
 import org.linphone.core.AccountCreatorListenerStub;
 import org.linphone.core.Call;
 import org.linphone.core.Call.State;
+import org.linphone.core.Config;
 import org.linphone.core.Core;
 import org.linphone.core.CoreListener;
 import org.linphone.core.CoreListenerStub;
@@ -414,6 +416,14 @@ public class LinphoneManager implements SensorEventListener {
             mCore.addListener(listener);
             mCore.addListener(mCoreListener);
 
+            // Popov включаем темный режим, если стоит соот
+            if (mPrefs.isDarkModeEnabled()) {
+                Config cfg = mPrefs.getConfig();
+                cfg.setBool("app", "dark_mode", true);
+                cfg.sync();
+                // mPrefs.enableDarkMode(true);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
             AndroidPlatformHelper.copyAssetsFromPackage(
                     mContext, "org.xcall.sert", "./share/linphone");
 

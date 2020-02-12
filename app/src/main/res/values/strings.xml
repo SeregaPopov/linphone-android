@@ -12,7 +12,7 @@
     <string name="tunnel_host"></string>
     <string name="about_version">XCall Android %s</string>
     <string name="about_liblinphone_version">XCall Core %s</string>
-    <string name="about_liblinphone_sdk_version">XCall SDK %s</string>
+    <string name="about_liblinphone_sdk_version">Linphone SDK %s</string>
     <string name="about_privacy_policy">Visit our privacy policy</string>
     <string name="sync_account_name">XCall contacts</string>
 

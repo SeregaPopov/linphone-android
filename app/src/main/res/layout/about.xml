@@ -21,7 +21,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:src="@drawable/splashscreen" />
+                android:src="@drawable/splashscreen"
+                android:visibility="invisible" />
 
             <TextView
                 android:textSize="13sp"

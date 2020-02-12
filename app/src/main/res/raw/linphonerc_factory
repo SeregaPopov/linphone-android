@@ -44,6 +44,8 @@ purchasable_items_ids=test_account_subscription
 [app]
 activation_code_length=4
 prefer_basic_chat_room=1
+friendlist_subscription_enabled=0
+dark_mode=1
 
 [assistant]
 domain=5.9.118.112

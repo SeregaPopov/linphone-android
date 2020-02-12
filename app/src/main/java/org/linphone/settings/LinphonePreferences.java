@@ -1228,8 +1228,12 @@ public class LinphonePreferences {
     }
 
     public void enableDarkMode(boolean enable) {
-        if (getConfig() == null) return;
-        getConfig().setBool("app", "dark_mode", enable);
+        // if (getConfig() == null) return;
+        // getConfig().setBool("app", "dark_mode", enable);
+        Config cfg = getConfig();
+        if (cfg == null) return;
+        cfg.setBool("app", "dark_mode", enable);
+        cfg.sync();
     }
 
     public String getDeviceName(Context context) {
