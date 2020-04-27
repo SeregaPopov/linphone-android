@@ -4,6 +4,9 @@
 		android:drawable="@color/primary_color" />
 	<item android:state_selected="true"
 		android:drawable="@color/dark_grey_color" />
+	<!--item android:state_enabled="false"
+		android:drawable="@color/disabled_color">
+	</item-->
 	<item
 		android:drawable="@color/dark_grey_color" />
 </selector>
