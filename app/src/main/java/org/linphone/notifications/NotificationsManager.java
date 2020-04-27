@@ -521,15 +521,18 @@ public class NotificationsManager {
             Log.i("[Notifications Manager] Creating missed calls notification");
         } else {
             Address address = call.getRemoteAddress();
-            LinphoneContact c = ContactsManager.getInstance().findContactFromAddress(address);
-            if (c != null) {
-                body = c.getFullName();
-            } else {
-                body = address.getDisplayName();
-                if (body == null) {
-                    body = address.asStringUriOnly();
-                }
-            }
+
+            // Popov: Оставлям только номер телефона в уведомлении
+            body = address.getUsername();
+            //LinphoneContact c = ContactsManager.getInstance().findContactFromAddress(address);
+            //if (c != null) {
+            //    body = c.getFullName();
+            //} else {
+            //    body = address.getDisplayName();
+            //    if (body == null) {
+            //        body = address.asStringUriOnly();
+            //    }
+            //}
             Log.i("[Notifications Manager] Creating missed call notification");
         }
 
