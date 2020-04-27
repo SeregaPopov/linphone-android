@@ -424,6 +424,8 @@ public class LinphoneManager implements SensorEventListener {
                 // mPrefs.enableDarkMode(true);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
+
+            // Popov: копируем наш сертификат куда нужно
             AndroidPlatformHelper.copyAssetsFromPackage(
                     mContext, "org.xcall.sert", "./share/linphone");
 

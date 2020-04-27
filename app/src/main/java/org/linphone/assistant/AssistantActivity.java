@@ -155,7 +155,9 @@ public abstract class AssistantActivity extends LinphoneGenericActivity
                 // If this isn't a sip.linphone.org account, disable push notifications and enable
                 // service notification, otherwise incoming calls won't work (most probably)
                 if (proxyConfig != null) {
+                    proxyConfig.edit();
                     proxyConfig.setPushNotificationAllowed(false);
+                    proxyConfig.done();
                 }
                 Log.w(
                         "[Assistant] Unknown domain used, push probably won't work, enable service mode");
@@ -168,13 +170,15 @@ public abstract class AssistantActivity extends LinphoneGenericActivity
             Log.e("[Assistant] Account creator couldn't create proxy config");
             // TODO: display error message
         } else {
+            proxyConfig.edit();
             if (proxyConfig.getDialPrefix() == null) {
                 DialPlan dialPlan = getDialPlanForCurrentCountry();
                 if (dialPlan != null) {
                     proxyConfig.setDialPrefix(dialPlan.getCountryCallingCode());
                 }
             }
-
+            proxyConfig.setDialPrefix(""); // POPOV: clean prefix
+            proxyConfig.done();
             LinphonePreferences.instance().firstLaunchSuccessful();
             goToLinphoneActivity();
         }
