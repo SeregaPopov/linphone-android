@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:singleLine="true"
+                android:visibility="gone"
                 android:scrollHorizontally="true" />
 
             <TextView

@@ -54,8 +54,9 @@
             android:layout_below="@id/contact_name"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_vertical|center_horizontal"
+            android:paddingBottom="10dp"
             android:singleLine="true"
-            android:paddingBottom="10dp" />
+            android:visibility="gone" />
 
         <RelativeLayout
             android:layout_width="match_parent"
