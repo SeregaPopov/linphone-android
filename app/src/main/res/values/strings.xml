@@ -12,7 +12,7 @@
     <string name="tunnel_host"></string>
     <string name="about_version">XCall Android %s</string>
     <string name="about_liblinphone_version">XCall Core %s</string>
-    <string name="about_liblinphone_sdk_version">Linphone SDK %s</string>
+    <string name="about_liblinphone_sdk_version">Xcall SDK %s</string>
     <string name="about_privacy_policy">Visit our privacy policy</string>
     <string name="sync_account_name">XCall contacts</string>
 
@@ -67,7 +67,7 @@
     <string name="logs_url_copied_to_clipboard">Logs url copied into clipboard</string>
 
     <!-- Launch screen -->
-    <string name="app_description">the <i>libre</i> SIP client</string>
+    <string name="app_description">the client</string>
 
     <!-- Assistant -->
     <string name="welcome">Welcome</string>
@@ -79,14 +79,14 @@
     <string name="assistant_finish">Finish configuration</string>
     <string name="assistant_validate_account_1">Your account is created. Please check your mails to validate your account:</string>
     <string name="assistant_validate_account_2">Once it is done, come back here and click on the button.</string>
-    <string name="assistant_welcome_desc">This assistant will help you configure and use your SIP account.</string>
+    <string name="assistant_welcome_desc">This assistant will help you configure and use your account.</string>
     <string name="assistant_linphone_login_desc">Please enter your username and password of XCall account</string>
     <string name="assistant_login_desc">Please enter your username and password with your SIP domain</string>
     <string name="assistant_remote_provisioning_desc">Please provide your provisioning URL</string>
     <string name="transport">Transport</string>
-    <string name="assistant_create_account_phone_number_address">Your SIP address is</string>
+    <string name="assistant_create_account_phone_number_address">Your address is</string>
     <string name="assistant_login_linphone">Use XCall account</string>
-    <string name="assistant_login_generic">Use SIP account</string>
+    <string name="assistant_login_generic">Use account</string>
     <string name="assistant_remote_provisioning">Fetch remote configuration</string>
     <string name="assistant_create_account_part_1">Please confirm your country code and enter your phone number</string>
     <string name="assistant_create_account_part_2">We have sent you a SMS with a validation code to your phone number:</string>
@@ -94,7 +94,7 @@
     <string name="assistant_create_account_part_email">Please enter an username, email and password for your XCall account</string>
     <string name="assistant_display_name_optional">Display name (optional)</string>
     <string name="assistant_linphone_account">Use your XCall account</string>
-    <string name="assistant_generic_account">Use SIP account</string>
+    <string name="assistant_generic_account">Use account</string>
     <string name="assistant_remote_provisioning_title">Fetch remote configuration</string>
     <string name="assistant_fetch_apply">Fetch and apply</string>
     <string name="assistant_launch_qrcode">QRCode</string>
@@ -165,7 +165,7 @@
     <string name="inapp_notification_account_expire">The subscription period expires on %s</string>
 
     <!-- Dailer -->
-    <string name="address_bar_hint">Enter a number or an address</string>
+    <string name="address_bar_hint">Enter a number</string>
 
     <!-- History -->
     <string name="no_call_history">No call in your history</string>
@@ -177,10 +177,10 @@
 
     <!-- Contacts -->
     <string name="no_contact">No contact in your address book.</string>
-    <string name="no_sip_contact">No SIP contact in your address book.</string>
+    <string name="no_sip_contact">No contact in your address book.</string>
     <string name="delete_contacts">Do you want to delete selected contacts?</string>
     <string name="delete_contact">Do you want to delete selected contact?</string>
-    <string name="sip_address">SIP address</string>
+    <string name="sip_address">Main number</string>
     <string name="contact_first_name">First name</string>
     <string name="contact_last_name">Last name</string>
     <string name="contact_organization">Organization</string>
@@ -280,9 +280,9 @@
     <string name="chat_message_forward_confirmation_dialog">Do you want to forward the message in this room?</string>
 
     <!-- Status Bar -->
-    <string name="status_connected">Connected</string>
-    <string name="status_not_connected">Not connected</string>
-    <string name="status_in_progress">Connection in progress</string>
+    <string name="status_connected">Online</string>
+    <string name="status_not_connected">Offline</string>
+    <string name="status_in_progress">Connection...</string>
     <string name="status_error">Connection failed</string>
     <string name="voicemail_unread"> unread messages</string>
 
@@ -370,7 +370,7 @@
     <string name="remote_provisioning_again_message">Do you want to change the provisioning URI?</string>
 
     <!-- Account Settings -->
-    <string name="pref_sipaccount">SIP Account</string>
+    <string name="pref_sipaccount">Account</string>
     <string name="pref_manage_title">Manage</string>
     <string name="pref_disable_account">Disable</string>
     <string name="pref_proxy">Proxy</string>
@@ -405,7 +405,7 @@
     <string name="pref_proxy_push_notif">Allow push notification</string>
 
     <!-- Settings -->
-    <string name="pref_sipaccounts">SIP Accounts</string>
+    <string name="pref_sipaccounts">Accounts</string>
     <string name="default_account_flag">Default account</string>
     <string name="pref_add_account">Add account</string>
     <string name="pref_in_app_store">In-app Store</string>
@@ -573,8 +573,8 @@
     <string name="content_description_back">Back</string>
     <string name="content_description_dialer">Dialer</string>
     <string name="content_description_menu">Menu</string>
-    <string name="content_description_toggle_micro">Toggle micro</string>
-    <string name="content_description_toggle_speaker">Toggle speaker</string>
+    <string name="content_description_toggle_micro">Micro</string>
+    <string name="content_description_toggle_speaker">Speaker</string>
     <string name="content_description_decline">Decline</string>
     <string name="content_description_hang_up">Hang up</string>
     <string name="content_description_accept">Accept</string>
@@ -606,13 +606,14 @@
     <string name="content_description_add_call">Add call</string>
     <string name="content_description_pause">Pause</string>
     <string name="content_description_numpad">Numpad</string>
-    <string name="content_description_history">History button</string>
-    <string name="content_description_chat_button">Chat button</string>
-    <string name="content_description_contacts">Contacts button</string>
+    <string name="content_description_history">History</string>
+    <string name="content_description_chat_button">Chat</string>
+    <string name="content_description_lk_button">Private area</string>
+    <string name="content_description_contacts">Contacts</string>
     <string name="content_description_call_quality">Call quality</string>
     <string name="content_description_encryption">Encryption</string>
     <string name="content_description_switch_camera">Switch camera</string>
-    <string name="content_description_cancel_button">Cancel button</string>
+    <string name="content_description_cancel_button">Cancel</string>
     <string name="content_description_message_status">Message status</string>
     <string name="content_description_conference">Conference</string>
     <string name="content_description_username_field">Username field</string>
@@ -646,4 +647,13 @@
     <string name="content_description_conversation_subject">Group chat room subject</string>
     <string name="content_description_conversation_infos">Group chat room info</string>
     <string name="content_description_record_call">Record call</string>
+    <string name="content_description_info_phone_number" >Phone number for account register</string>
+    <string name="content_description_clear_filed">Clear country field</string>
+    <string name="content_description_nocontact">No one contact in contct list</string>
+    <string name="content_description_lk_info">Private area info</string>
+    <string name="content_description_lk_report">Private area report</string>
+    <string name="content_description_lk_rates">Call rates info</string>
+    <string name="content_description_lk_pay">Private area payments</string>
+    <string name="facebook_app_id">3110854215601005</string>
+    <string name="facebook_login_protocol_scheme">fb3110854215601005</string>
 </resources>
