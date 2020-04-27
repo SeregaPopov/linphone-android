@@ -340,7 +340,13 @@ public class LinphonePreferences {
 
     public boolean isVideoEnabled() {
         if (getLc() == null) return false;
-        return getLc().videoSupported() && getLc().videoEnabled();
+        // return getLc().videoSupported() && getLc().videoEnabled();
+
+        // Popov: one more video check
+        Config cfg = getConfig();
+        if (cfg == null) return false;
+        boolean isVideoEnable = cfg.getBool("app", "enable_videocall", true);
+        return getLc().videoSupported() && getLc().videoEnabled() && isVideoEnable;
     }
 
     public void enableVideo(boolean enable) {
@@ -426,14 +432,43 @@ public class LinphonePreferences {
     }
     // End of video settings
 
+    // Popov: hidden menu prop
+    public boolean isHiddenMenu() {
+        Config cfg = getConfig();
+        if (cfg == null) return false;
+        boolean isHiddenMenu = cfg.getBool("app", "hidden_menu", false);
+        return isHiddenMenu;
+    }
+
+    // Popov: enable/disable videocalls
+    public boolean isVideoEnable() {
+        Config cfg = getConfig();
+        if (cfg == null) return false;
+        boolean isVideoEnable = cfg.getBool("app", "enable_videocall", true);
+        return isVideoEnable;
+    }
+
     // Contact settings
     public boolean isFriendlistsubscriptionEnabled() {
-        if (getConfig() == null) return false;
-        if (getConfig().getBool("app", "friendlist_subscription_enabled", false)) {
-            // Old setting, do migration
-            getConfig().setBool("app", "friendlist_subscription_enabled", false);
-            enabledFriendlistSubscription(true);
+        // Popov: friendlist_subscription_enabled переписал. Управление из конфига
+        {
+            Config cfg = getConfig();
+            if (cfg == null) return false;
+
+            boolean isFriendlistSubsc =
+                    cfg.getBool("app", "friendlist_subscription_enabled", false);
+            cfg.setBool("app", "friendlist_subscription_enabled", isFriendlistSubsc);
+            enabledFriendlistSubscription(isFriendlistSubsc);
+            cfg.sync();
         }
+
+        // Popov: этот код активирует переключатель подписки по умолчанию
+        // if (getConfig() == null) return false;
+        // if (getConfig().getBool("app", "friendlist_subscription_enabled", false)) {
+        //    // Old setting, do migration
+        //    getConfig().setBool("app", "friendlist_subscription_enabled", false);
+        //    enabledFriendlistSubscription(true);
+        // }
         return getLc().isFriendListSubscriptionEnabled();
     }
 

@@ -332,6 +332,10 @@ public class CallActivity extends LinphoneGenericActivity
                         goToChatList();
                     }
                 });
+        // Popov: убираем чат в звонках если отключен
+        if (getResources().getBoolean(R.bool.disable_chat)) {
+            chat.setVisibility(View.GONE);
+        }
 
         mPause = findViewById(R.id.pause);
         mPause.setOnClickListener(

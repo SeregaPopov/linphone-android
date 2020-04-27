@@ -103,6 +103,7 @@
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:hint="@string/international_prefix"
+                            android:enabled="false"
                             android:maxLines="1"/>
 
                         <EditText
@@ -120,9 +121,10 @@
 
                     <CheckBox
                         android:id="@+id/use_username"
-                        android:text="@string/use_username_instead_or_phone_number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/use_username_instead_or_phone_number"
+                        android:visibility="invisible" />
 
                     <EditText
                         android:id="@+id/username"
@@ -148,7 +150,8 @@
                         android:id="@+id/sip_uri"
                         style="@style/contact_organization_font"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
@@ -156,15 +159,15 @@
 
             <TextView
                 android:id="@+id/assistant_create"
-                android:text="@string/assistant_create_account"
-                android:background="@drawable/assistant_button"
-                android:textColor="@drawable/assistant_button_text_color"
-                android:layout_gravity="center"
                 style="@style/button_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:padding="10dp"/>
+                android:background="@drawable/assistant_button"
+                android:padding="10dp"
+                android:text="@string/assistant_create_account"
+                android:textColor="@drawable/assistant_button_text_color" />
 
         </LinearLayout>
 

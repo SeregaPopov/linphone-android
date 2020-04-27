@@ -325,6 +325,8 @@ public class ContactDetailsFragment extends Fragment implements ContactsUpdatedL
                                     goToChat((String) v.getTag(), false);
                                 }
                             });
+            v.findViewById(R.id.contact_chat).setEnabled(false); // Popov: chats disabled
+
             v.findViewById(R.id.contact_chat_secured)
                     .setOnClickListener(
                             new OnClickListener() {
@@ -333,6 +335,8 @@ public class ContactDetailsFragment extends Fragment implements ContactsUpdatedL
                                     goToChat((String) v.getTag(), true);
                                 }
                             });
+            v.findViewById(R.id.contact_chat_secured).setEnabled(false); // Popov: chats disabled
+
             if (contactAddress != null) {
                 v.findViewById(R.id.contact_chat).setTag(contactAddress);
                 v.findViewById(R.id.contact_chat_secured).setTag(contactAddress);
