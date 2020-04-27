@@ -26,12 +26,12 @@ host=
 port=5061
 
 [misc]
-log_collection_upload_server_url=https://5.9.118.112:444/lft.php
-file_transfer_server_url=https://5.9.118.112:444/lft.php
-version_check_url_root=https://5.9.118.112/releases
+log_collection_upload_server_url=https://xcall.tmb-ix.net:444/lft.php
+file_transfer_server_url=https://xcall.tmb-ix.net:444/lft.php
+version_check_url_root=https://xcall.tmb-ix.net/releases
 max_calls=10
 history_max_size=100
 
 [in-app-purchase]
-server_url=https://5.9.118.112:444/inapp.php
+server_url=https://xcall.tmb-ix.net:444/inapp.php
 purchasable_items_ids=test_account_subscription

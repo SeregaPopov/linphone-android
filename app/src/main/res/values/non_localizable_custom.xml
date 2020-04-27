@@ -3,15 +3,15 @@
 
     <!-- URLs, URIs and domain -->
     <!-- Set the default domain used for account creation/addresses -->
-    <string name="default_domain" translatable="false">5.9.118.112</string>
-    <string name="default_stun" translatable="false">5.9.118.112</string>
-    <string name="default_conference_factory_uri" translatable="false">sip:conference-factory@5.9.118.112</string>
-    <string name="default_lime_x3dh_server_url" translatable="false">https://5.9.118.112/lime-server/lime-server.php</string>
-    <string name="rls_uri" translatable="false">sip:rls@5.9.118.112</string>
-    <string name="about_link" translatable="false">https://5.9.118.112</string>
-    <string name="download_link" translatable="false">https://5.9.118.112/download</string>
-    <string name="recover_password_link" translatable="false">https://5.9.118.112/freesip/recover</string>
-    <string name="about_privacy_policy_link" translatable="false">https://5.9.118.112/terms-and-privacy</string>
+    <string name="default_domain" translatable="false">xcall.tmb-ix.net</string>
+    <string name="default_stun" translatable="false">xcall.tmb-ix.net</string>
+    <string name="default_conference_factory_uri" translatable="false">sip:conference-factory@xcall.tmb-ix.net</string>
+    <string name="default_lime_x3dh_server_url" translatable="false">https://xcall.tmb-ix.net/lime-server/lime-server.php</string>
+    <string name="rls_uri" translatable="false">sip:rls@xcall.tmb-ix.net</string>
+    <string name="about_link" translatable="false">https://xcall.tmb-ix.net/about</string>
+    <string name="download_link" translatable="false">https://xcall.tmb-ix.net/download</string>
+    <string name="recover_password_link" translatable="false">https://xcall.tmb-ix.net/freesip/recover</string>
+    <string name="about_privacy_policy_link" translatable="false">https://xcall.tmb-ix.net/terms-and-privacy</string>
     <string name="about_license_link" translatable="false">https://www.gnu.org/licenses/gpl-3.0.html</string>
 
     <!-- Textual mention of the app name -->
@@ -60,10 +60,11 @@
     <!-- Start Linphone creation account in loginFragment view instead of menu -->
     <bool name="assistant_use_create_linphone_account_as_first_fragment">false</bool>
     <bool name="assistant_hide_status_bar">true</bool>
-    <bool name="assistant_hide_top_bar">false</bool>
+    <!-- Popov: Скрыть верхний таб со стрелкой back-->
+    <bool name="assistant_hide_top_bar">true</bool>
     <bool name="hide_linphone_accounts_in_assistant">false</bool>
-    <bool name="hide_generic_accounts_in_assistant">false</bool>
-    <bool name="hide_remote_provisioning_in_assistant">false</bool>
+    <bool name="hide_generic_accounts_in_assistant">true</bool>
+    <bool name="hide_remote_provisioning_in_assistant">true</bool>
     <!-- Set the email field of the wizard with one of the gmail account registered on the device -->
     <bool name="pre_fill_email_in_assistant">true</bool>
     <bool name="assistant_account_validation_mandatory">false</bool>
@@ -74,7 +75,8 @@
     <bool name="forbid_self_call">false</bool>
     <bool name="allow_ringing_while_early_media">false</bool>
     <bool name="allow_transfers">true</bool>
-    <bool name="disable_options_in_call">false</bool>
+    <!-- Popov: Отключение меню во время звонка -->
+    <bool name="disable_options_in_call">true</bool>
     <bool name="hide_in_call_stats">false</bool>
     <bool name="do_not_use_sliders_to_answer_hangup_call_if_phone_unlocked">true</bool>
     <bool name="allow_pip_while_video_call">true</bool>
@@ -85,9 +87,9 @@
     <bool name="hide_accounts">false</bool>
 
     <!-- Chat -->
-    <bool name="disable_chat">false</bool>
-    <bool name="disable_chat_message_notification">false</bool>
-    <bool name="disable_chat_send_file">false</bool>
+    <bool name="disable_chat">true</bool>
+    <bool name="disable_chat_message_notification">true</bool>
+    <bool name="disable_chat_send_file">true</bool>
     <bool name="lower_space_between_chat_bubbles_if_same_person">true</bool>
     <bool name="allow_multiple_images_and_text">true</bool>
     <bool name="send_text_and_images_as_different_messages">false</bool>
@@ -139,7 +141,7 @@
     <integer name="time_between_update_check">86400000</integer>
 
     <!-- Inapp -->
-    <bool name="enable_in_app_purchase">false</bool>
+    <bool name="enable_in_app_purchase">true</bool>
     <!-- Notification shown before end of trial version in days -->
     <integer name="days_notification_shown">5</integer>
     <!-- Time between two inapp notifications in milliseconds -->

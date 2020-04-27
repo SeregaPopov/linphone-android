@@ -34,28 +34,33 @@ notify_each_friend_individually_when_presence_received=0
 enable_basic_to_client_group_chat_room_migration=0
 enable_simple_group_chat_message_state=0
 aggregate_imdn=1
-version_check_url_root=http://5.9.118.112/releases
-config-uri=http://5.9.118.112/config.xml
+version_check_url_root=https://xcall.tmb-ix.net/releases
+config-uri=https://xcall.tmb-ix.net/config.xml
 
 [in-app-purchase]
-server_url=https://5.9.118.112:444/inapp.php
+server_url=https://xcall.tmb-ix.net:444/inapp.php
 purchasable_items_ids=test_account_subscription
 
 [app]
 activation_code_length=4
 prefer_basic_chat_room=1
 friendlist_subscription_enabled=0
+store_presence_in_native_contact=0
+display_contact_organization=0
+shortcuts=0
 dark_mode=1
+hidden_menu=1
+enable_videocall=0
 
 [assistant]
-domain=5.9.118.112
+domain=xcall.tmb-ix.net
 password_max_length=-1
 password_min_length=1
 username_length=-1
 username_max_length=64
 username_min_length=1
 username_regex=^[a-z0-9_.\-]*$
-xmlrpc_url=http://5.9.118.112/wizard.php
+xmlrpc_url=https://xcall.tmb-ix.net/wizard.php
 
 
 [lime]
