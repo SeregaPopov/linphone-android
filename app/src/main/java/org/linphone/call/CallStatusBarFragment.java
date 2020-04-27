@@ -47,6 +47,7 @@ import org.linphone.core.RegistrationState;
 import org.linphone.core.tools.Log;
 import org.linphone.settings.LinphonePreferences;
 import org.linphone.utils.LinphoneUtils;
+import org.xcall.AccountManager;
 
 public class CallStatusBarFragment extends Fragment {
     private TextView mStatusText;
@@ -88,6 +89,10 @@ public class CallStatusBarFragment extends Fragment {
                             final ProxyConfig proxy,
                             final RegistrationState state,
                             String message) {
+
+                        AccountManager accMgr = new AccountManager(getActivity());
+                        accMgr.UpdateMoneyRequest();
+
                         if (core.getProxyConfigList() == null) {
                             mStatusLed.setImageResource(R.drawable.led_disconnected);
                             mStatusText.setText(getString(R.string.no_account));

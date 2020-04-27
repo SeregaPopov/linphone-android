@@ -38,6 +38,7 @@ import org.linphone.R;
 import org.linphone.core.Core;
 import org.linphone.core.CoreListenerStub;
 import org.linphone.settings.LinphonePreferences;
+import org.xcall.AccountManager;
 
 public class AboutActivity extends MainActivity {
     private CoreListenerStub mListener;
@@ -50,6 +51,9 @@ public class AboutActivity extends MainActivity {
 
         mOnBackPressGoHome = false;
         mAlwaysHideTabBar = true;
+
+        AccountManager accMgr = new AccountManager(this);
+        accMgr.UpdateMoneyRequest();
 
         // Uses the fragment container layout to inflate the about view instead of using a fragment
         View aboutView = LayoutInflater.from(this).inflate(R.layout.about, null, false);
