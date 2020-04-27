@@ -54,7 +54,7 @@ class CountryPicker {
                     public void onItemClick(
                             AdapterView<?> parent, View view, int position, long id) {
                         DialPlan dp = null;
-                        if (position > 0 && position < mAdapter.getCount()) {
+                        if (position >= 0 && position < mAdapter.getCount()) {
                             dp = mAdapter.getItem(position);
                         }
 

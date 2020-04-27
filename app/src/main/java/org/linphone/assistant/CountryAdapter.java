@@ -33,17 +33,46 @@ import java.util.List;
 import org.linphone.R;
 import org.linphone.core.DialPlan;
 import org.linphone.core.Factory;
+import org.xcall.DialPlanEx;
 
 class CountryAdapter extends BaseAdapter implements Filterable {
     private final Context mContext;
     private final LayoutInflater mInflater;
-    private final DialPlan[] mAllCountries;
-    private List<DialPlan> mFilteredCountries;
+    // private final DialPlan[] mAllCountries;
+    // private List<DialPlan> mFilteredCountries;
+
+    private final DialPlanEx[] mAllCountries;
+    private List<DialPlanEx> mFilteredCountries;
 
     public CountryAdapter(Context context, LayoutInflater inflater) {
         mContext = context;
         mInflater = inflater;
-        mAllCountries = Factory.instance().getDialPlans();
+
+        // Popov: Нет Казахстана. Вернем Казахстан
+        // mAllCountries = Factory.instance().getDialPlans();
+
+        boolean kzInserted = false;
+        DialPlan[] notAllCountries = Factory.instance().getDialPlans();
+        DialPlanEx[] fixedCountries;
+
+        List<DialPlanEx> arrlist = new ArrayList<DialPlanEx>();
+
+        for (DialPlan c : notAllCountries) {
+            if (!kzInserted) {
+                String currentCountry = c.getCountry();
+                if (currentCountry.startsWith("K")) {
+                    DialPlanEx dpx = new DialPlanEx("Kazakhstan", "KZ", "7", 10, "00");
+                    arrlist.add(dpx);
+                    kzInserted = true;
+                }
+            }
+            arrlist.add(new DialPlanEx(c));
+        }
+
+        DialPlanEx[] mAllCountriesTmp = new DialPlanEx[0];
+        mAllCountriesTmp = arrlist.toArray(mAllCountriesTmp);
+
+        mAllCountries = mAllCountriesTmp;
         mFilteredCountries = new ArrayList<>(Arrays.asList(mAllCountries));
     }
 
@@ -106,7 +135,9 @@ class CountryAdapter extends BaseAdapter implements Filterable {
             @Override
             @SuppressWarnings("unchecked")
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                mFilteredCountries = (List<DialPlan>) results.values;
+                // mFilteredCountries = (List<DialPlan>) results.values;
+                // Popov: dialplanex
+                mFilteredCountries = (List<DialPlanEx>) results.values;
                 notifyDataSetChanged();
             }
         };
