@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="?attr/lighToolbarBackgroundColor"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2">
+
+                <TextView
+                    android:id="@+id/lk_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/button_background_drawable"
+                    android:contentDescription="@string/content_description_lk_info"
+                    android:gravity="center"
+                    android:text="Info" />
+                <!--ImageView
+                    android:id="@+id/all_calls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/button_background_drawable"
+                    android:contentDescription="@string/content_description_all_contacts"
+                    android:padding="15dp"
+                    android:src="@drawable/history_all" /-->
+
+                <View
+                    android:id="@+id/lk_info_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="?attr/accentColor" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2">
+
+                <TextView
+                    android:id="@+id/lk_report"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/button_background_drawable"
+                    android:contentDescription="@string/content_description_lk_report"
+                    android:gravity="center"
+                    android:text="Report"
+                    />
+
+                <!--ImageView
+                    android:id="@+id/missed_calls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/button_background_drawable"
+                    android:contentDescription="@string/content_description_linphone_contacts"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:src="@drawable/history_missed" /-->
+
+                <View
+                    android:id="@+id/lk_report_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="?attr/accentColor"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2">
+
+                <TextView
+                    android:id="@+id/lk_rates"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/button_background_drawable"
+                    android:contentDescription="@string/content_description_lk_rates"
+                    android:gravity="center"
+                    android:text="Rates"
+                    />
+
+                <!--ImageView
+                    android:id="@+id/missed_calls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/button_background_drawable"
+                    android:contentDescription="@string/content_description_linphone_contacts"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:src="@drawable/history_missed" /-->
+
+                <View
+                    android:id="@+id/lk_rates_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="?attr/accentColor"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2">
+
+                <TextView
+                    android:id="@+id/lk_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/button_background_drawable"
+                    android:contentDescription="@string/content_description_lk_pay"
+                    android:gravity="center"
+                    android:text="Pay"
+                    />
+
+                <!--ImageView
+                    android:id="@+id/missed_calls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/button_background_drawable"
+                    android:contentDescription="@string/content_description_linphone_contacts"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:src="@drawable/history_missed" /-->
+
+                <View
+                    android:id="@+id/lk_pay_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="?attr/accentColor"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:text="@string/error_network_unreachable"
+            android:textColor="@color/red_color"
+            android:visibility="visible"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

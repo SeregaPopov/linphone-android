@@ -165,12 +165,13 @@
                     android:background="@drawable/footer_button">
 
                     <ImageView
+                        android:id="@+id/chat_button_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:contentDescription="@string/content_description_chat_button"
                         android:padding="15dp"
-                        android:src="@drawable/footer_chat" />
+                        android:src="@drawable/footer_chat_button" />
 
                     <View
                         android:id="@+id/chat_select"
@@ -189,6 +190,31 @@
                         android:background="@drawable/unread_message_count_bg"
                         android:gravity="center"
                         android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/private_area"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/footer_button">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/content_description_lk_button"
+                        android:padding="15dp"
+                        android:src="@drawable/footer_lk" />
+
+                    <View
+                        android:id="@+id/privatearea_select"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="?attr/accentColor"
+                        android:visibility="gone"/>
 
                 </RelativeLayout>
 

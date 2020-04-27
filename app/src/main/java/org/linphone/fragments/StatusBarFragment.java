@@ -38,6 +38,8 @@ import org.linphone.core.Event;
 import org.linphone.core.ProxyConfig;
 import org.linphone.core.RegistrationState;
 import org.linphone.core.tools.Log;
+import org.linphone.settings.LinphonePreferences;
+import org.xcall.AccountManager;
 
 public class StatusBarFragment extends Fragment {
     private TextView mStatusText, mVoicemailCount;
@@ -58,6 +60,10 @@ public class StatusBarFragment extends Fragment {
         mVoicemail = view.findViewById(R.id.voicemail);
         mVoicemailCount = view.findViewById(R.id.voicemail_count);
         mCurrentMoneyText = view.findViewById(R.id.money_text); // Popov
+
+        if (LinphonePreferences.instance().isHiddenMenu()) {
+            menu.setVisibility(View.INVISIBLE);
+        }
 
         mMenuListener = null;
         menu.setOnClickListener(
@@ -81,6 +87,10 @@ public class StatusBarFragment extends Fragment {
                             final ProxyConfig proxy,
                             final RegistrationState state,
                             String smessage) {
+
+                        AccountManager accMgr = new AccountManager(getActivity());
+                        accMgr.UpdateMoneyRequest();
+
                         if (core.getProxyConfigList() == null) {
                             showNoAccountConfigured();
                             return;

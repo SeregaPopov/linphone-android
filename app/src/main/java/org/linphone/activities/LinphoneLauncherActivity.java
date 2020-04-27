@@ -34,6 +34,7 @@ import org.linphone.service.LinphoneService;
 import org.linphone.service.ServiceWaitThread;
 import org.linphone.service.ServiceWaitThreadListener;
 import org.linphone.settings.LinphonePreferences;
+import org.xcall.PrivateAreaActivity;
 
 /** Creates LinphoneService and wait until Core is ready to start main Activity */
 public class LinphoneLauncherActivity extends Activity implements ServiceWaitThreadListener {
@@ -80,6 +81,8 @@ public class LinphoneLauncherActivity extends Activity implements ServiceWaitThr
                     classToStart = HistoryActivity.class;
                 } else if (ContactsActivity.NAME.equals(activity)) {
                     classToStart = ContactsActivity.class;
+                } else if (PrivateAreaActivity.NAME.equals(activity)) {
+                    classToStart = PrivateAreaActivity.class;
                 } else {
                     classToStart = DialerActivity.class;
                 }

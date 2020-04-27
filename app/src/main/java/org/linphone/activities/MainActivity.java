@@ -75,6 +75,7 @@ import org.linphone.settings.LinphonePreferences;
 import org.linphone.settings.SettingsActivity;
 import org.linphone.utils.DeviceUtils;
 import org.linphone.utils.LinphoneUtils;
+import org.xcall.PrivateAreaActivity;
 
 public abstract class MainActivity extends LinphoneGenericActivity
         implements StatusBarFragment.MenuClikedListener, SideMenuFragment.QuitClikedListener {
@@ -87,6 +88,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
     protected View mHistorySelected;
     protected View mDialerSelected;
     protected View mChatSelected;
+    protected View mPrivateAreaSelected;
     private LinearLayout mTopBar;
     private TextView mTopBarTitle;
     private LinearLayout mTabBar;
@@ -149,6 +151,21 @@ public abstract class MainActivity extends LinphoneGenericActivity
                         startActivity(intent);
                     }
                 });
+        // chat.setEnabled(false); // Popov: disable chat button
+        // View chatButtonImage = findViewById(R.id.chat_button_image);
+        // chatButtonImage.setEnabled(false);
+
+        // Popov: add private area button
+        RelativeLayout privateArea = findViewById(R.id.private_area);
+        privateArea.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, PrivateAreaActivity.class);
+                        addFlagsToIntent(intent);
+                        startActivity(intent);
+                    }
+                });
 
         mMissedCalls = findViewById(R.id.missed_calls);
         mMissedMessages = findViewById(R.id.missed_chats);
@@ -157,6 +174,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
         mContactsSelected = findViewById(R.id.contacts_select);
         mDialerSelected = findViewById(R.id.dialer_select);
         mChatSelected = findViewById(R.id.chat_select);
+        mPrivateAreaSelected = findViewById(R.id.privatearea_select);
 
         mTabBar = findViewById(R.id.footer);
         mTopBar = findViewById(R.id.top_bar);
@@ -298,6 +316,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
         mContactsSelected.setVisibility(View.GONE);
         mDialerSelected.setVisibility(View.GONE);
         mChatSelected.setVisibility(View.GONE);
+        mPrivateAreaSelected.setVisibility(View.GONE);
 
         mStatusBarFragment.setMenuListener(this);
         mSideMenuFragment.setQuitListener(this);
@@ -336,6 +355,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
         mHistorySelected = null;
         mDialerSelected = null;
         mChatSelected = null;
+        mPrivateAreaSelected = null;
         mTopBar = null;
         mTopBarTitle = null;
         mTabBar = null;
