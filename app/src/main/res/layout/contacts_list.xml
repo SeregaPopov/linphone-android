@@ -151,6 +151,7 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="@string/no_contact"
+            android:contentDescription="@string/content_description_nocontact"
             android:visibility="gone" />
 
     </RelativeLayout>

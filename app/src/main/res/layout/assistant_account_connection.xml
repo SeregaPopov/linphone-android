@@ -70,6 +70,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_below="@id/phone_number_desc"
                     android:layout_alignParentRight="true"
+                    android:contentDescription="@string/content_description_info_phone_number"
                     android:layout_width="20dp"
                     android:layout_height="20dp"/>
 
@@ -109,6 +110,7 @@
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:hint="@string/international_prefix"
+                            android:enabled="false"
                             android:maxLines="1"/>
 
                         <EditText
@@ -215,6 +217,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
+                android:visibility="invisible"
                 android:paddingTop="10dp">
 
                 <Switch
