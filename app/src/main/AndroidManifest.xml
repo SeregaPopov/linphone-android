@@ -173,7 +173,8 @@
             android:name=".call.CallActivity"
             android:launchMode="singleTop"
             android:showWhenLocked="true"
-            android:supportsPictureInPicture="true" /> <!-- Assistant activities -->
+            android:supportsPictureInPicture="true" />
+        <!-- Assistant activities -->
         <activity android:name=".assistant.MenuAssistantActivity" />
         <activity android:name=".assistant.AccountConnectionAssistantActivity" />
         <activity android:name=".assistant.EmailAccountCreationAssistantActivity" />
@@ -185,7 +186,8 @@
         <activity android:name=".assistant.QrCodeConfigurationAssistantActivity" />
         <activity android:name=".assistant.RemoteConfigurationAssistantActivity" />
         <activity android:name=".assistant.EchoCancellerCalibrationAssistantActivity" />
-        <activity android:name=".assistant.OpenH264DownloadAssistantActivity" /> <!-- Services -->
+
+        <!-- Services -->
         <service
             android:name=".service.LinphoneService"
             android:label="@string/service_name" />
