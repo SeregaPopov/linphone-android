@@ -25,6 +25,7 @@ public class PravateAreaFragment extends Fragment implements View.OnClickListene
     // public static final String DOMAIN = "http://5.9.118.112";
     public static final String DOMAIN = "https://xcall.tmb-ix.net";
 
+    private boolean _firstTime = false;
     private TextView mInfo, mReport, mRates, mPay;
     private View mInfoSelected, mReportSelected, mRatesSelected, mPaySelected;
 
@@ -32,6 +33,10 @@ public class PravateAreaFragment extends Fragment implements View.OnClickListene
 
     private String mHA1 = "";
     private String mUserName = "";
+
+    public void IsFirstTime(boolean isFirstTime) {
+        _firstTime = isFirstTime;
+    }
 
     @Nullable
     @Override
@@ -78,7 +83,9 @@ public class PravateAreaFragment extends Fragment implements View.OnClickListene
                     }
                 });
 
-        updateView(R.id.lk_info);
+        if (_firstTime) {
+            updateView(R.id.lk_rates);
+        } else updateView(R.id.lk_info);
 
         return rootView;
     }

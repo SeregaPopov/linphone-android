@@ -79,9 +79,12 @@ public class PrivateAreaActivity extends MainActivity {
     protected void onStart() {
         super.onStart();
 
+        boolean isFirstTime = getIntent().getBooleanExtra("firstTime", false);
+
         Fragment currentFragment = getFragmentManager().findFragmentById(R.id.fragmentContainer);
         if (currentFragment == null) {
             PravateAreaFragment fragment = new PravateAreaFragment();
+            fragment.IsFirstTime(isFirstTime);
             changeFragment(fragment, "PrivateArea", false);
         }
     }

@@ -38,8 +38,8 @@ import org.linphone.core.DialPlan;
 import org.linphone.core.Factory;
 import org.linphone.core.ProxyConfig;
 import org.linphone.core.tools.Log;
-import org.linphone.dialer.DialerActivity;
 import org.linphone.settings.LinphonePreferences;
+import org.xcall.PrivateAreaActivity;
 
 public abstract class AssistantActivity extends LinphoneGenericActivity
         implements CountryPicker.CountryPickedListener {
@@ -210,7 +210,11 @@ public abstract class AssistantActivity extends LinphoneGenericActivity
             if (openH264 && abiSupported && androidVersionOk && !codecFound) {
                 intent = new Intent(this, OpenH264DownloadAssistantActivity.class);
             } else {*/
-            intent = new Intent(this, DialerActivity.class);
+
+            // Popov: При первом запуске стартует личный кабинет - тарифы
+            // intent = new Intent(this, DialerActivity.class);
+            intent = new Intent(this, PrivateAreaActivity.class);
+            intent.putExtra("firstTime", true);
             intent.addFlags(
                     Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             // }
