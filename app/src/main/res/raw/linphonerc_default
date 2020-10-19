@@ -31,6 +31,7 @@ file_transfer_server_url=https://xcall.tmb-ix.net:444/lft.php
 version_check_url_root=https://xcall.tmb-ix.net/releases
 max_calls=10
 history_max_size=100
+hide_chat_rooms_from_removed_proxies=0
 
 [in-app-purchase]
 server_url=https://xcall.tmb-ix.net:444/inapp.php

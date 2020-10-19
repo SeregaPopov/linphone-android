@@ -25,6 +25,7 @@ displaytype=MSAndroidTextureDisplay
 auto_resize_preview_to_keep_ratio=1
 
 [misc]
+hide_chat_rooms_from_removed_proxies=0
 enable_basic_to_client_group_chat_room_migration=0
 enable_simple_group_chat_message_state=0
 aggregate_imdn=1
@@ -49,7 +50,7 @@ store_presence_in_native_contact=0
 display_contact_organization=0
 shortcuts=0
 dark_mode=1
-hidden_menu=1
+hidden_menu=0
 enable_videocall=0
 
 [assistant]
