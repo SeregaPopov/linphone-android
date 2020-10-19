@@ -785,12 +785,20 @@ public abstract class MainActivity extends LinphoneGenericActivity
         dialog.show();
     }
 
+    private Dialog dialogDND = null;
+
     private void displayDNDSettingsDialog() {
         if (!LinphonePreferences.instance().isDNDSettingsPopupEnabled()) return;
+
+        if (dialogDND != null) return;
+
         Log.w("[Permission] Asking user to grant us permission to read DND settings");
 
         final Dialog dialog =
                 displayDialog(getString(R.string.pref_grant_read_dnd_settings_permission_desc));
+
+        dialogDND = dialog; // POPOV: Диалог DND не должен перекрывать себя бескончено
+
         dialog.findViewById(R.id.dialog_do_not_ask_again_layout).setVisibility(View.VISIBLE);
         final CheckBox doNotAskAgain = dialog.findViewById(R.id.doNotAskAgain);
         dialog.findViewById(R.id.doNotAskAgainLabel)
@@ -810,6 +818,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
                             LinphonePreferences.instance().enableDNDSettingsPopup(false);
                         }
                         dialog.dismiss();
+                        dialogDND = null;
                     }
                 });
         Button ok = dialog.findViewById(R.id.dialog_ok_button);
@@ -826,6 +835,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
                             Log.e("[Main Activity] Activity not found exception: ", anfe);
                         }
                         dialog.dismiss();
+                        dialogDND = null;
                     }
                 });
         Button delete = dialog.findViewById(R.id.dialog_delete_button);

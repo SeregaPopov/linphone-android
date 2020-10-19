@@ -26,7 +26,7 @@ import android.os.Bundle;
 import android.util.Log;
 import org.linphone.LinphoneManager;
 import org.linphone.R;
-import org.linphone.assistant.MenuAssistantActivity;
+import org.linphone.assistant.WelcomeActivity;
 import org.linphone.chat.ChatActivity;
 import org.linphone.contacts.ContactsActivity;
 import org.linphone.dialer.DialerActivity;
@@ -74,10 +74,14 @@ public class LinphoneLauncherActivity extends Activity implements ServiceWaitThr
     public void onServiceReady() {
         final Class<? extends Activity> classToStart;
 
+        Intent intent = new Intent();
+
         boolean useFirstLoginActivity =
                 getResources().getBoolean(R.bool.display_account_assistant_at_first_start);
         if (useFirstLoginActivity && LinphonePreferences.instance().isFirstLaunch()) {
-            classToStart = MenuAssistantActivity.class;
+            // Popov: Меняем стандартный асистент на Welcome screen
+            // classToStart = MenuAssistantActivity.class;
+            classToStart = WelcomeActivity.class;
         } else {
             if (getIntent().getExtras() != null) {
                 String activity = getIntent().getExtras().getString("Activity", null);
@@ -101,7 +105,6 @@ public class LinphoneLauncherActivity extends Activity implements ServiceWaitThr
             LinphoneManager.getInstance().checkForUpdate();
         }
 
-        Intent intent = new Intent();
         intent.setClass(LinphoneLauncherActivity.this, classToStart);
         if (getIntent() != null && getIntent().getExtras() != null) {
             intent.putExtras(getIntent().getExtras());

@@ -1,1 +1,2 @@
 -dontwarn org.apache.**
+-dontwarn com.android.installreferrer.com.android.installreferrer

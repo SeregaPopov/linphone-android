@@ -146,8 +146,15 @@ public class DeviceUtils {
         return Compatibility.getAppStandbyBucket(context);
     }
 
+    static Dialog dialogPM = null;
+
     public static void displayDialogIfDeviceHasPowerManagerThatCouldPreventPushNotifications(
             final Context context) {
+
+        if (dialogPM != null) {
+            return;
+        }
+
         for (final Intent intent : POWERMANAGER_INTENTS) {
             if (DeviceUtils.isIntentCallable(context, intent)) {
                 Log.w(
@@ -158,7 +165,10 @@ public class DeviceUtils {
                 if (!LinphonePreferences.instance().hasPowerSaverDialogBeenPrompted()) {
                     Log.w("[Hacks] Asking power saver for whitelist !");
 
+                    // final Dialog dialog = new Dialog(context); // POPOV: Диалог не должен
+                    // перекрываться бесконечно
                     final Dialog dialog = new Dialog(context);
+                    dialogPM = dialog;
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     Drawable d =
                             new ColorDrawable(
@@ -212,6 +222,7 @@ public class DeviceUtils {
                                                 se);
                                     }
                                     dialog.dismiss();
+                                    dialogPM = null;
                                 }
                             });
 
@@ -228,6 +239,7 @@ public class DeviceUtils {
                                                 .powerSaverDialogPrompted(true);
                                     }
                                     dialog.dismiss();
+                                    dialogPM = null;
                                 }
                             });
 

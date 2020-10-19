@@ -28,7 +28,7 @@
         <TextView
             android:id="@+id/title_account_creation"
             android:visibility="gone"
-            android:text="@string/assistant_create_account"
+            android:text="@string/assistant_agree_phone_number"
             style="@style/standard_text_font"
             android:textAllCaps="true"
             android:gravity="center_horizontal"
@@ -68,7 +68,7 @@
 
         <TextView
             android:id="@+id/phone_number"
-            style="@style/standard_text_font"
+            style="@style/accent_colored_title_font"
             android:paddingTop="10dp"
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
@@ -84,17 +84,17 @@
 
         <EditText
             android:id="@+id/sms_code"
-            android:background="@drawable/resizable_textfield"
-            android:textColor="@color/black_color"
-            android:contentDescription="@string/content_description_activation_code_field"
-            android:inputType="number"
-            android:gravity="center_vertical|center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/confirmation_code"
-            android:maxLines="1"/>
+            android:layout_height="70dp"
+            android:background="@color/grey_color"
+            android:contentDescription="@string/content_description_activation_code_field"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="48sp"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/white_color" />
 
-        <TextView
+        <!--TextView
             android:id="@+id/finish_account_creation"
             android:text="@string/assistant_finish"
             android:background="@drawable/assistant_button"
@@ -103,8 +103,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:padding="10dp"/>
-
+            android:padding="10dp"/-->
+        <include
+            android:id="@+id/waitScreen"
+            layout="@layout/wait_layout" />
     </LinearLayout>
+
 
 </LinearLayout>

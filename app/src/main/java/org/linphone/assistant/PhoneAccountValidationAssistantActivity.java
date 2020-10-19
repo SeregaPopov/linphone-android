@@ -22,12 +22,17 @@ package org.linphone.assistant;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import org.linphone.R;
 import org.linphone.core.AccountCreator;
 import org.linphone.core.AccountCreatorListenerStub;
@@ -35,19 +40,79 @@ import org.linphone.core.tools.Log;
 import org.linphone.settings.LinphonePreferences;
 
 public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
-    private TextView mFinishCreation;
+    // private TextView mFinishCreation;
     private EditText mSmsCode;
     private ClipboardManager mClipboard;
+    private TextView mPhoneNumber;
+    private View waitScreen;
 
     private int mActivationCodeLength;
     private boolean mIsLinking = false, mIsLogin = false;
     private AccountCreatorListenerStub mListener;
+
+    // Popov: Аналитика по валидациям смс
+    private FirebaseAnalytics mFirebaseAnalytics;
+
+    private void smsCodeEntered() {
+
+        mSmsCode.clearFocus();
+        mSmsCode.setEnabled(false);
+
+        if (waitScreen != null) {
+            waitScreen.setVisibility(View.VISIBLE);
+        }
+
+        AccountCreator accountCreator = getAccountCreator();
+        accountCreator.setActivationCode(mSmsCode.getText().toString());
+
+        AccountCreator.Status status;
+        if (mIsLinking) {
+            status = accountCreator.activateAlias();
+        } else if (mIsLogin) {
+            status = accountCreator.loginLinphoneAccount();
+        } else {
+            status = accountCreator.activateAccount();
+        }
+
+        if (status != AccountCreator.Status.RequestOk) {
+
+            Log.e(
+                    "[Phone Account Validation] "
+                            + (mIsLinking
+                                    ? "linkAccount"
+                                    : (mIsLogin ? "loginLinphoneAccount" : "activateAccount")
+                                            + " returned ")
+                            + status);
+            showGenericErrorDialog(status);
+            if (waitScreen != null) {
+                waitScreen.setVisibility(View.GONE);
+            }
+            mFirebaseAnalytics.logEvent("account_sms_validation_false1", null);
+
+            mSmsCode.getText().clear();
+            mSmsCode.setEnabled(true);
+
+            mSmsCode.clearFocus();
+            mSmsCode.requestFocus();
+            showSoftKeyboard(mSmsCode);
+        } else {
+            mFirebaseAnalytics.logEvent("account_sms_validation_ok", null);
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.assistant_phone_account_validation);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        waitScreen = findViewById(R.id.waitScreen);
+        if (waitScreen != null) {
+            waitScreen.setVisibility(View.GONE);
+        }
 
         if (getIntent() != null && getIntent().getBooleanExtra("isLoginVerification", false)) {
             findViewById(R.id.title_account_login).setVisibility(View.VISIBLE);
@@ -63,10 +128,41 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
         mActivationCodeLength =
                 getResources().getInteger(R.integer.phone_number_validation_code_length);
 
-        TextView phoneNumber = findViewById(R.id.phone_number);
-        phoneNumber.setText(getAccountCreator().getPhoneNumber());
+        mPhoneNumber = findViewById(R.id.phone_number);
+        mPhoneNumber.setText(getAccountCreator().getPhoneNumber());
+        mPhoneNumber.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
 
         mSmsCode = findViewById(R.id.sms_code);
+        mSmsCode.setFilters(
+                new InputFilter[] {new InputFilter.LengthFilter(mActivationCodeLength)});
+
+        mSmsCode.setLetterSpacing(0.4f);
+
+        mSmsCode.setOnFocusChangeListener(
+                new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (hasFocus) {
+                            getWindow()
+                                    .setSoftInputMode(
+                                            WindowManager.LayoutParams
+                                                    .SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                            // showSoftKeyboard(v);
+                            // mSmsCode.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                        } else
+                            getWindow()
+                                    .setSoftInputMode(
+                                            WindowManager.LayoutParams
+                                                    .SOFT_INPUT_STATE_UNSPECIFIED);
+                    }
+                });
+
         mSmsCode.addTextChangedListener(
                 new TextWatcher() {
                     @Override
@@ -78,43 +174,55 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        mFinishCreation.setEnabled(s.length() == mActivationCodeLength);
-                    }
-                });
-
-        mFinishCreation = findViewById(R.id.finish_account_creation);
-        mFinishCreation.setEnabled(false);
-        mFinishCreation.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        AccountCreator accountCreator = getAccountCreator();
-                        mFinishCreation.setEnabled(false);
-                        accountCreator.setActivationCode(mSmsCode.getText().toString());
-
-                        AccountCreator.Status status;
-                        if (mIsLinking) {
-                            status = accountCreator.activateAlias();
-                        } else if (mIsLogin) {
-                            status = accountCreator.loginLinphoneAccount();
-                        } else {
-                            status = accountCreator.activateAccount();
-                        }
-                        if (status != AccountCreator.Status.RequestOk) {
-                            Log.e(
-                                    "[Phone Account Validation] "
-                                            + (mIsLinking
-                                                    ? "linkAccount"
-                                                    : (mIsLogin
-                                                                    ? "loginLinphoneAccount"
-                                                                    : "activateAccount")
-                                                            + " returned ")
-                                            + status);
-                            mFinishCreation.setEnabled(true);
-                            showGenericErrorDialog(status);
+                        // mFinishCreation.setEnabled(s.length() == mActivationCodeLength);
+                        if (s.length() == mActivationCodeLength) {
+                            smsCodeEntered();
                         }
                     }
                 });
+
+        // mFinishCreation = findViewById(R.id.finish_account_creation);
+        // mFinishCreation.setEnabled(false);
+
+        //        mFinishCreation.setOnClickListener(
+        //                new View.OnClickListener() {
+        //                    @Override
+        //                    public void onClick(View v) {
+        //                        Bundle bundle = new Bundle();
+        //                        bundle.putString(
+        //                                FirebaseAnalytics.Param.VALUE,
+        // mSmsCode.getText().toString());
+        //                        mFirebaseAnalytics.logEvent("phone_account_validation_click",
+        // bundle);
+        //
+        //                        AccountCreator accountCreator = getAccountCreator();
+        //                        mFinishCreation.setEnabled(false);
+        //                        accountCreator.setActivationCode(mSmsCode.getText().toString());
+        //
+        //                        AccountCreator.Status status;
+        //                        if (mIsLinking) {
+        //                            status = accountCreator.activateAlias();
+        //                        } else if (mIsLogin) {
+        //                            status = accountCreator.loginLinphoneAccount();
+        //                        } else {
+        //                            status = accountCreator.activateAccount();
+        //                        }
+        //                        if (status != AccountCreator.Status.RequestOk) {
+        //                            Log.e(
+        //                                    "[Phone Account Validation] "
+        //                                            + (mIsLinking
+        //                                                    ? "linkAccount"
+        //                                                    : (mIsLogin
+        //                                                                    ?
+        // "loginLinphoneAccount"
+        //                                                                    : "activateAccount")
+        //                                                            + " returned ")
+        //                                            + status);
+        //                            mFinishCreation.setEnabled(true);
+        //                            showGenericErrorDialog(status);
+        //                        }
+        //                    }
+        //                });
 
         mListener =
                 new AccountCreatorListenerStub() {
@@ -169,15 +277,22 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                         }
                     }
                 });
+
+        mSmsCode.clearFocus();
+        mSmsCode.requestFocus();
+        showSoftKeyboard(mSmsCode);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         getAccountCreator().addListener(mListener);
-
+        if (waitScreen != null) {
+            waitScreen.setVisibility(View.GONE);
+        }
         // Prevent user to go back, it won't be able to come back here after...
-        mBack.setEnabled(false);
+        // mBack.setEnabled(false);
+        showSoftKeyboard(mSmsCode);
     }
 
     @Override
@@ -187,11 +302,52 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
     }
 
     private void onError(AccountCreator.Status status) {
-        mFinishCreation.setEnabled(true);
+        // mFinishCreation.setEnabled(true);
+
+        if (waitScreen != null) {
+            waitScreen.setVisibility(View.GONE);
+        }
+        mFirebaseAnalytics.logEvent("account_sms_validation_false", null);
         showGenericErrorDialog(status);
+
+        mSmsCode.getText().clear();
+        mSmsCode.setEnabled(true);
+        mSmsCode.clearFocus();
+        mSmsCode.requestFocus();
+        showSoftKeyboard(mSmsCode);
 
         if (status.equals(AccountCreator.Status.WrongActivationCode)) {
             // TODO do something so the server re-send a SMS
         }
+    }
+
+    public void showSoftKeyboard(View view) {
+        // if (view.requestFocus()) {
+        // InputMethodManager imm =
+        //        (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        // imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        // imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        // imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        //// getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        // getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
+
+        view.dispatchTouchEvent(
+                MotionEvent.obtain(
+                        SystemClock.uptimeMillis(),
+                        SystemClock.uptimeMillis(),
+                        MotionEvent.ACTION_DOWN,
+                        0,
+                        0,
+                        0));
+        view.dispatchTouchEvent(
+                MotionEvent.obtain(
+                        SystemClock.uptimeMillis(),
+                        SystemClock.uptimeMillis(),
+                        MotionEvent.ACTION_UP,
+                        0,
+                        0,
+                        0));
+        // }
     }
 }

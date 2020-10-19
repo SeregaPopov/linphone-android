@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import org.linphone.LinphoneManager;
 import org.linphone.R;
 import org.linphone.core.AccountCreator;
@@ -45,11 +46,17 @@ public class PhoneAccountCreationAssistantActivity extends AssistantActivity {
 
     private AccountCreatorListenerStub mListener;
 
+    // Popov: Аналитика по регистрациям
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.assistant_phone_account_creation);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mCountryPicker = findViewById(R.id.select_country);
         mCountryPicker.setOnClickListener(
@@ -69,6 +76,7 @@ public class PhoneAccountCreationAssistantActivity extends AssistantActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        mFirebaseAnalytics.logEvent("create_phone_account_click", null);
                         AccountCreator accountCreator = getAccountCreator();
                         enableButtonsAndFields(false);
 

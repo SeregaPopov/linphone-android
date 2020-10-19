@@ -135,6 +135,23 @@
     <string name="phone_number_link_info_content_already_account">You can only use your phone number with one XCall account.\n\nIf you had already linked your number to an other account but you prefer to use this one, simply link it now and your number will automatically be moved to this account.</string>
     <string name="phone_number_overuse">Too much SMS have been sent to this number in a short period of time, try again in 24 hours.</string>
     <string name="account_doesnt_exist">Account doesn\'t exist</string>
+    <!--string name="agree_terms_privacy">By continuing, you agree to our\n&lt;a href=https://xcall.tmb-ix.net/terms.html>Terms of Use&lt;/a>\nand\n&lt;a href=https://xcall.tmb-ix.net/privacy.html>Privacy Policy&lt;/a></string-->
+    <!--Popov: доработка ассистента-->
+    <string name="assistant_welcome_text">High-quality and affordable\ninternational calls\nto any phones</string>
+    <string name="rates">Our rates</string>
+    <string name="assistant_enter_phone_number">Enter your phone number</string>
+    <string name="assistant_agree_phone_number">Verify Phone Number</string>
+    <string name="agree_terms_privacy">By continuing, you agree to our\n&lt;a href=https://xcall.tmb-ix.net/terms.html>Terms of Use&lt;/a>\nand\n&lt;a href=https://xcall.tmb-ix.net/privacy.html>Privacy Policy&lt;/a></string>
+    <string name="agree_sms_recieve">By clicking "Verify Phone Number", an SMS will be sent. Message and data rates may apply.</string>
+
+
+
+
+
+
+
+
+
 
     <!-- Status -->
     <string name="invalid_email">Invalid email</string>
@@ -648,7 +665,7 @@
     <string name="content_description_conversation_subject">Group chat room subject</string>
     <string name="content_description_conversation_infos">Group chat room info</string>
     <string name="content_description_record_call">Record call</string>
-    <string name="content_description_info_phone_number" >Phone number for account register</string>
+    <string name="content_description_info_phone_number">Phone number for account register</string>
     <string name="content_description_clear_filed">Clear country field</string>
     <string name="content_description_nocontact">No one contact in contct list</string>
     <string name="content_description_lk_info">Private area info</string>

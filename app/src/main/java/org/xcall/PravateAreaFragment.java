@@ -25,6 +25,9 @@ public class PravateAreaFragment extends Fragment implements View.OnClickListene
     // public static final String DOMAIN = "http://5.9.118.112";
     public static final String DOMAIN = "https://xcall.tmb-ix.net";
 
+    public static final String TestHTTP = "https://xcall.tmb-ix.net/pay/fondy/pay.php";
+    public static final String TestHTTPUA = "https://xn--80agecg4bru4h.xn--p1ai/";
+
     private boolean _firstTime = false;
     private TextView mInfo, mReport, mRates, mPay;
     private View mInfoSelected, mReportSelected, mRatesSelected, mPaySelected;
@@ -65,6 +68,11 @@ public class PravateAreaFragment extends Fragment implements View.OnClickListene
 
         xcallWebView = (WebView) rootView.findViewById(R.id.webview);
         WebSettings webSettings = xcallWebView.getSettings();
+
+        // webSettings.setUserAgentString(
+        //        "Mozilla/5.0 (Linux; Android 10; Redmi Note 8 Pro) AppleWebKit/537.36 (KHTML, like
+        // Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36");
+
         webSettings.setJavaScriptEnabled(true);
         xcallWebView.getSettings().setAppCacheEnabled(false);
         xcallWebView.setWebViewClient(
@@ -112,6 +120,7 @@ public class PravateAreaFragment extends Fragment implements View.OnClickListene
             mPay.setEnabled(true);
 
             path = "/usr/info.php?";
+            // xcallWebView.loadUrl(TestHTTP);
             // xcallWebView.loadUrl(DOMAIN + "/usr/info.php?" + authInfo() + langInfo());
             // refresh();
         }
@@ -128,6 +137,7 @@ public class PravateAreaFragment extends Fragment implements View.OnClickListene
             mPay.setEnabled(true);
 
             path = "/usr/report.php?";
+            // xcallWebView.loadUrl(TestHTTPUA);
             // xcallWebView.loadUrl(DOMAIN + "/usr/report.php?" + authInfo() + langInfo());
         }
         if (id == R.id.lk_rates) {

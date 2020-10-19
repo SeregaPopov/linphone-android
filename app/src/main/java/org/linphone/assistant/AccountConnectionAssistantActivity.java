@@ -47,11 +47,17 @@ public class AccountConnectionAssistantActivity extends AssistantActivity {
 
     private AccountCreatorListenerStub mListener;
 
+    // Popov: Аналитика по входам используя аккаунт
+    // private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.assistant_account_connection);
+
+        // Obtain the FirebaseAnalytics instance.
+        // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mPhoneNumberConnection = findViewById(R.id.phone_number_form);
 
@@ -72,6 +78,8 @@ public class AccountConnectionAssistantActivity extends AssistantActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // mFirebaseAnalytics.logEvent("phone_account_connection_click", null);
+
                         AccountCreator accountCreator = getAccountCreator();
                         accountCreator.reset();
                         mConnect.setEnabled(false);
