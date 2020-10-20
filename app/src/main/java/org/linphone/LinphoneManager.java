@@ -90,7 +90,7 @@ public class LinphoneManager implements SensorEventListener {
     private final SensorManager mSensorManager;
     private final Sensor mProximity;
     private final MediaScanner mMediaScanner;
-    private Timer mTimer, mAutoAnswerTimer;
+    private Timer mTimer;
 
     private final LinphonePreferences mPrefs;
     private Core mCore;
@@ -182,8 +182,8 @@ public class LinphoneManager implements SensorEventListener {
                         } else if (state == State.IncomingReceived
                                 && (LinphonePreferences.instance().isAutoAnswerEnabled())
                                 && !getCallGsmON()) {
-                            TimerTask lTask =
-                                    new TimerTask() {
+                            LinphoneUtils.dispatchOnUIThreadAfter(
+                                    new Runnable() {
                                         @Override
                                         public void run() {
                                             if (mCore != null) {
@@ -193,9 +193,8 @@ public class LinphoneManager implements SensorEventListener {
                                                 }
                                             }
                                         }
-                                    };
-                            mAutoAnswerTimer = new Timer("Auto answer");
-                            mAutoAnswerTimer.schedule(lTask, mPrefs.getAutoAnswerTime());
+                                    },
+                                    mPrefs.getAutoAnswerTime());
                         } else if (state == State.End || state == State.Error) {
                             if (mCore.getCallsNb() == 0) {
                                 // Disabling proximity sensor
@@ -396,7 +395,6 @@ public class LinphoneManager implements SensorEventListener {
         if (mAudioManager != null) mAudioManager.destroy();
 
         if (mTimer != null) mTimer.cancel();
-        if (mAutoAnswerTimer != null) mAutoAnswerTimer.cancel();
 
         if (mCore != null) {
             destroyCore();
@@ -470,6 +468,7 @@ public class LinphoneManager implements SensorEventListener {
 
         String deviceName = mPrefs.getDeviceName(mContext);
         String appName = mContext.getResources().getString(R.string.user_agent);
+
         String androidVersion = org.linphone.BuildConfig.VERSION_NAME;
         String userAgent = appName + "/" + androidVersion + " (" + deviceName + ") LinphoneSDK";
 
@@ -813,20 +812,6 @@ public class LinphoneManager implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     /* Other stuff */
-
-    public void checkForUpdate() {
-        String url = LinphonePreferences.instance().getCheckReleaseUrl();
-        if (url != null && !url.isEmpty()) {
-            int lastTimestamp = LinphonePreferences.instance().getLastCheckReleaseTimestamp();
-            int currentTimeStamp = (int) System.currentTimeMillis();
-            int interval =
-                    mContext.getResources().getInteger(R.integer.time_between_update_check); // 24h
-            if (lastTimestamp == 0 || currentTimeStamp - lastTimestamp >= interval) {
-                mCore.checkForUpdate(BuildConfig.VERSION_NAME);
-                LinphonePreferences.instance().setLastCheckReleaseTimestamp(currentTimeStamp);
-            }
-        }
-    }
 
     public void enableDeviceRingtone(boolean use) {
         if (use) {

@@ -101,10 +101,6 @@ public class LinphoneLauncherActivity extends Activity implements ServiceWaitThr
             }
         }
 
-        if (getResources().getBoolean(R.bool.check_for_update_when_app_starts)) {
-            LinphoneManager.getInstance().checkForUpdate();
-        }
-
         intent.setClass(LinphoneLauncherActivity.this, classToStart);
         if (getIntent() != null && getIntent().getExtras() != null) {
             intent.putExtras(getIntent().getExtras());
